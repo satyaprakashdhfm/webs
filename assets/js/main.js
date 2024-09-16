@@ -270,11 +270,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Function to calculate and display age
+  console.log("DOM fully loaded and parsed");
+  
   function updateAge() {
+    console.log("updateAge function called");
     const ageElement = document.getElementById('current-age');
-    const birthDate = new Date(ageElement.getAttribute('data-birthday'));
+    
+    if (!ageElement) {
+      console.error("Age element not found");
+      return;
+    }
+    
+    const birthDateString = ageElement.getAttribute('data-birthday');
+    console.log("Birth date from attribute:", birthDateString);
+    
+    if (!birthDateString) {
+      console.error("Birth date attribute is missing");
+      return;
+    }
+    
+    const birthDate = new Date(birthDateString);
     const today = new Date();
+    
     let age = today.getFullYear() - birthDate.getFullYear();
     const monthDifference = today.getMonth() - birthDate.getMonth();
     
@@ -282,12 +299,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
       age--;
     }
     
+    console.log("Calculated age:", age);
     ageElement.textContent = age;
   }
 
-  // Call the function to update age
-  updateAge();
-
-  // Update age every day (86400000 milliseconds = 1 day)
-  setInterval(updateAge, 86400000);
+  try {
+    updateAge();
+  } catch (error) {
+    console.error("Error updating age:", error);
+  }
 });
