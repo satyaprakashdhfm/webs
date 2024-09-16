@@ -10,52 +10,76 @@
 # Font & Color Variables
 # Help: https://bootstrapmade.com/color-system/
 --------------------------------------------------------------*/
-/* Fonts */
-:root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Raleway",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
-}
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* Dark Mode Color Variables */
 :root { 
-  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
-  --default-color: #272829; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #050d18; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #149ddd; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
-  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --background-color: #121212;
+  --default-color: #e0e0e0;
+  --heading-color: #ffffff;
+  --accent-color: #64ffda;
+  --surface-color: #1e1e1e;
+  --contrast-color: #121212;
+
+  /* Nav Menu Colors - Dark Mode */
+  --nav-color: #b0b0b0;
+  --nav-hover-color: #ffffff;
+  --nav-mobile-background-color: #1a1a1a;
+  --nav-dropdown-background-color: #1a1a1a;
+  --nav-dropdown-color: #b0b0b0;
+  --nav-dropdown-hover-color: #ffffff;
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #a8a9b4;  /* The default color of the main navmenu links */
-  --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #040b14; /* Used as the background color for mobile navigation menu */
-  --nav-dropdown-background-color: #040b14; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #a8a9b4; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
-}
-
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
-
+/* Color Presets - Dark Mode */
 .light-background {
-  --background-color: #f4fafd;
-  --surface-color: #ffffff;
+  --background-color: #1a1a1a;
+  --surface-color: #242424;
 }
 
 .dark-background {
-  --background-color: #040b14;
-  --default-color: #ffffff;
+  --background-color: #0a0a0a;
+  --default-color: #e0e0e0;
   --heading-color: #ffffff;
-  --surface-color: #151f2b;
-  --contrast-color: #ffffff;
+  --surface-color: #1a1a1a;
+  --contrast-color: #e0e0e0;
 }
 
-/* Smooth scroll */
-:root {
-  scroll-behavior: smooth;
+/* Additional Dark Mode Adjustments */
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
 }
+
+a {
+  color: var(--accent-color);
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+.hero:before {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.skills .progress-bar-wrap {
+  background: color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.portfolio .portfolio-content .portfolio-info {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  color: var(--default-color);
+  background-color: var(--surface-color);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+/* You may need to add more specific adjustments here */
+
+
 
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
@@ -1267,9 +1291,175 @@ section,
   color: var(--accent-color);
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+/* ... (previous dark mode changes remain the same) ... */
+
+/* Update the hero section to add blur effect */
+.hero img {
+  filter: blur(5px); /* Adjust the pixel value to increase or decrease blur */
+}
+
+.hero:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for better contrast */
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+/* Ensure the content remains sharp */
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* ... (rest of the dark mode changes) ... */
+
+
+.social-links .leetcode {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social-links .leetcode:hover {
+  background: #149ddd;
+}
+
+
+.social-links .x-twitter svg {
+  width: 16px;
+  height: 16px;
+}
+
+.social-links .x-twitter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.social-links .x-twitter:hover {
+  background: #000000; /* X's brand color is typically black */
+}
+
+
+.social-links .leetcode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.social-links .leetcode:hover {
+  background: #FFA116; /* LeetCode's brand color */
+}
+
+.social-links .leetcode .leetcode-logo {
+  width: 24px; /* Adjust as needed */
+  height: 24px; /* Adjust as needed */
+  object-fit: contain;
+}
+
+.header .social-links {
+  margin: 0 0 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header .social-links a {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin: 0 5px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+.header .social-links a:hover {
+  background: var(--accent-color);
+}
+
+.header .social-links a i {
+  line-height: 0;
+}
+
+.header .social-links .leetcode img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.header .social-links .leetcode:hover {
+  background: #FFA116;
+}
+
+.hero .greeting {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.hero .wave {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  transform-origin: 70% 70%;
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate( 0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate( 0.0deg) }
+  100% { transform: rotate( 0.0deg) }
+}
+
+#visitor-greeting {
+  display: inline-block;
+  min-width: 10px;
+  position: relative;
+}
+
+#visitor-greeting::after {
+  content: '|';
+  position: absolute;
+  right: -5px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }

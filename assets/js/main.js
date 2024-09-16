@@ -227,3 +227,44 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const greetings = [
+    "Welcome to my world",
+    "Glad you're here",
+    "Thanks for stopping by",
+    "Great to see you",
+    "How's your day going?",
+    "Ready to explore?",
+    "Let's create something amazing",
+    "Curiosity brought you here?",
+    "Exciting projects await",
+    "Innovation starts here"
+  ];
+
+  const visitorGreeting = document.getElementById('visitor-greeting');
+  let currentGreetingIndex = 0;
+
+  function typeGreeting(greeting, index = 0) {
+    if (index < greeting.length) {
+      visitorGreeting.textContent += greeting.charAt(index);
+      setTimeout(() => typeGreeting(greeting, index + 1), 50);
+    } else {
+      setTimeout(eraseGreeting, 2000);
+    }
+  }
+
+  function eraseGreeting() {
+    const currentText = visitorGreeting.textContent;
+    if (currentText.length > 0) {
+      visitorGreeting.textContent = currentText.slice(0, -1);
+      setTimeout(eraseGreeting, 25);
+    } else {
+      currentGreetingIndex = (currentGreetingIndex + 1) % greetings.length;
+      setTimeout(() => typeGreeting(greetings[currentGreetingIndex]), 500);
+    }
+  }
+
+  typeGreeting(greetings[currentGreetingIndex]);
+});
