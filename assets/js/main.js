@@ -268,3 +268,26 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   typeGreeting(greetings[currentGreetingIndex]);
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  // Function to calculate and display age
+  function updateAge() {
+    const ageElement = document.getElementById('current-age');
+    const birthDate = new Date(ageElement.getAttribute('data-birthday'));
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+    
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    
+    ageElement.textContent = age;
+  }
+
+  // Call the function to update age
+  updateAge();
+
+  // Update age every day (86400000 milliseconds = 1 day)
+  setInterval(updateAge, 86400000);
+});
